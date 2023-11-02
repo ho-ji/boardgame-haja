@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     cursor: pointer;
     padding: 0;
+    font : inherit;
   }
   input{
     padding: 0;
