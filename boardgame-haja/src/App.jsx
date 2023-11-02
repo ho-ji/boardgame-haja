@@ -28,6 +28,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     font-size: 1.6rem;
+    font-family: Century Gothic, sans-serif;
   }
   a{
     text-decoration: none;
