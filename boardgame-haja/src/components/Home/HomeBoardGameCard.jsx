@@ -2,9 +2,12 @@ import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
 const CardContainer = styled.div`
-  width: 35rem;
-  height: 50rem;
-  border: 1px solid #bdbdbd;
+  width: 100%;
+  aspect-ratio: 4/5;
+  padding: 1rem;
+  &:hover {
+    padding: 0;
+  }
 `
 const CardLink = styled(Link)``
 const CardImage = styled.img`
@@ -15,21 +18,28 @@ const CardImage = styled.img`
 const CardName = styled.p`
   text-align: center;
   font-weight: bold;
+  margin-top: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
+const CardYear = styled.p`
+  margin-top: 0.5rem;
+  text-align: center;
 `
 
 const HomeBoardGameCard = (props) => {
   return (
-    <CardContainer>
-      <CardLink to={''}>
+    <CardLink to={''}>
+      <CardContainer>
         <CardImage
           src={props.thumbnail}
           alt={props.name + '이미지'}
         />
-      </CardLink>
-      <CardName>
-        {props.name} {props.year && `(${props.year})`}
-      </CardName>
-    </CardContainer>
+        <CardName>{props.name}</CardName>
+        {props.year && <CardYear>({props.year})</CardYear>}
+      </CardContainer>
+    </CardLink>
   )
 }
 export default HomeBoardGameCard

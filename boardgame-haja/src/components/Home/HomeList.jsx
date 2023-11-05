@@ -6,6 +6,9 @@ import HomeBoardGameCard from './HomeBoardGameCard'
 
 const ListContainer = styled.main`
   display: grid;
+  margin: 5rem 20rem 10rem 20rem;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-rows: auto;
   gap: 2rem;
 `
 
