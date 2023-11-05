@@ -41,6 +41,7 @@ const HomeList = () => {
 
   return (
     <ListContainer>
+      <h2 className="a11y-hidden">BoardGame Hot 50 List</h2>
       {gameList.length ? (
         gameList.map((game) => {
           return (
