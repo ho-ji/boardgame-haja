@@ -30,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
   body{
     font-size: 1.6rem;
     font-family: Century Gothic, sans-serif;
+    line-height: 1.3;
   }
   a{
     text-decoration: none;
