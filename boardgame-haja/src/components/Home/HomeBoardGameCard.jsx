@@ -40,13 +40,23 @@ const HomeBoardGameCard = (props) => {
   return (
     <Link to={`/detail/${props.id}`}>
       <CardContainer>
-        <Ranking>{props.ranking}</Ranking>
+        <Ranking>
+          {props.ranking}
+          <span className="a11y-hidden">place</span>
+        </Ranking>
         <CardImage
           src={props.thumbnail}
-          alt={props.name + '이미지'}
+          alt="image"
         />
-        <CardName>{props.name}</CardName>
-        {props.year && <CardYear>({props.year})</CardYear>}
+        <CardName>
+          <span className="a11y-hidden">Name is </span>
+          {props.name}
+        </CardName>
+        {props.year && (
+          <CardYear>
+            ({props.year})<span className="a11y-hidden"> published</span>
+          </CardYear>
+        )}
       </CardContainer>
     </Link>
   )
