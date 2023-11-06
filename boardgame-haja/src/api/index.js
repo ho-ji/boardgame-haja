@@ -9,9 +9,9 @@ export const getJSONToXML = async (url) => {
     .then((response) => {
       const xmlData = response.data
 
-      xml2js.parseString(xmlData, (err, result) => {
-        if (err) {
-          console.error('Error parsing XML:', err)
+      xml2js.parseString(xmlData, (error, result) => {
+        if (error) {
+          console.error('Error parsing XML:', error)
         } else {
           data = result
         }
