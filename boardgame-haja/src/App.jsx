@@ -3,6 +3,7 @@ import {createGlobalStyle} from 'styled-components'
 import reset from 'styled-reset'
 
 import Home from 'pages/Home'
+import Detail from 'pages/Detail'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -57,6 +58,10 @@ const App = () => {
         <Route
           path="/"
           element={<Home />}
+        />
+        <Route
+          path="/detail/:id"
+          element={<Detail />}
         />
       </Routes>
     </BrowserRouter>

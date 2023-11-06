@@ -24,13 +24,12 @@ const CardName = styled.p`
   text-overflow: ellipsis;
 `
 const CardYear = styled.p`
-  margin-top: 0.5rem;
   text-align: center;
 `
 
 const HomeBoardGameCard = (props) => {
   return (
-    <CardLink to={''}>
+    <CardLink to={`/detail/${props.id}`}>
       <CardContainer>
         <CardImage
           src={props.thumbnail}
