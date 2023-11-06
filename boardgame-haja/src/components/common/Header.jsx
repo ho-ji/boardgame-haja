@@ -22,6 +22,7 @@ const Container = styled.header`
 const Title = styled.p`
   font-size: 4.5rem;
   font-weight: bold;
+  line-height: 0.7;
 `
 const SubTitle = styled.p`
   font-size: 1.7rem;
