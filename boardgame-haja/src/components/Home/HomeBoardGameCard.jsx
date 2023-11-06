@@ -8,8 +8,17 @@ const CardContainer = styled.div`
   &:hover {
     padding: 0;
   }
+  position: relative;
 `
-const CardLink = styled(Link)``
+const Ranking = styled.p`
+  position: absolute;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: 0.5rem;
+`
+
 const CardImage = styled.img`
   width: 100%;
   aspect-ratio: 1/1;
@@ -29,8 +38,9 @@ const CardYear = styled.p`
 
 const HomeBoardGameCard = (props) => {
   return (
-    <CardLink to={`/detail/${props.id}`}>
+    <Link to={`/detail/${props.id}`}>
       <CardContainer>
+        <Ranking>{props.ranking}</Ranking>
         <CardImage
           src={props.thumbnail}
           alt={props.name + '이미지'}
@@ -38,7 +48,7 @@ const HomeBoardGameCard = (props) => {
         <CardName>{props.name}</CardName>
         {props.year && <CardYear>({props.year})</CardYear>}
       </CardContainer>
-    </CardLink>
+    </Link>
   )
 }
 export default HomeBoardGameCard

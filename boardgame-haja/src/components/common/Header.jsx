@@ -14,8 +14,10 @@ const Container = styled.header`
   height: 10rem;
   padding: 0 1.2rem;
   background-color: white;
+  border-bottom: 2px dashed black;
   position: sticky;
   top: 0;
+  z-index: 100;
 `
 const Title = styled.p`
   font-size: 4.5rem;
