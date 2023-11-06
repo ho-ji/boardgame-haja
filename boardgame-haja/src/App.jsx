@@ -38,6 +38,9 @@ const GlobalStyle = createGlobalStyle`
     font-size: inherit;
     color: inherit;
   }
+  img{
+    vertical-align: top;
+  }
   .a11y-hidden{
     clip: rect(1px, 1px, 1px, 1px);
     clip-path: inset(50%);
