@@ -27,3 +27,20 @@ export const getBoardGameListAPI = async () => {
   const result = await getJSONToXML('/hot?TYPE=boardgame')
   return result.items.item
 }
+
+export const getDetailInfoAPI = async (id) => {
+  const data = await getJSONToXML(`/thing?id=${id}`)
+  const tempData = data.items.item[0]
+  const result = {
+    description: tempData.description,
+    image: tempData.image,
+    maxplayers: tempData.maxplayers[0]?.$.value,
+    minplayers: tempData.minplayers[0]?.$.value,
+    maxplaytime: tempData.maxplaytime[0]?.$.value,
+    minplaytime: tempData.minplaytime[0]?.$.value,
+    minage: tempData.minage[0]?.$.value,
+    name: tempData.name[0]?.$.value,
+    yearpublished: tempData.yearpublished[0]?.$.value,
+  }
+  return result
+}
