@@ -11,7 +11,7 @@ const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 10rem;
+  height: var(--header-height);
   padding: 0 1.2rem;
   background-color: white;
   border-bottom: 2px dashed black;

@@ -4,6 +4,7 @@ import reset from 'styled-reset'
 
 import Home from 'pages/Home'
 import Detail from 'pages/Detail'
+import NotFound from 'pages/NotFound'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -15,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     padding: 0;
     font : inherit;
+    background: inherit;
   }
   input{
     padding: 0;
@@ -51,6 +53,9 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     position: absolute;
   }
+  :root {
+    --header-height: 10rem;
+  }
 `
 
 const App = () => {
@@ -65,6 +70,10 @@ const App = () => {
         <Route
           path="/detail/:id"
           element={<Detail />}
+        />
+        <Route
+          path="/*"
+          element={<NotFound />}
         />
       </Routes>
     </BrowserRouter>
