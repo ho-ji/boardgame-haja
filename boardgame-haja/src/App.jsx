@@ -5,6 +5,7 @@ import reset from 'styled-reset'
 import Home from 'pages/Home'
 import Detail from 'pages/Detail'
 import NotFound from 'pages/NotFound'
+import ScrollRestoration from 'components/common/ScrollRestoration'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -61,6 +62,7 @@ const GlobalStyle = createGlobalStyle`
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollRestoration />
       <GlobalStyle />
       <Routes>
         <Route
