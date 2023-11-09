@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import styled from 'styled-components'
 import {useState} from 'react'
 
@@ -23,9 +23,11 @@ const Title = styled.p`
   font-size: 4.5rem;
   font-weight: bold;
   line-height: 0.7;
+  text-align: left;
 `
 const SubTitle = styled.p`
   font-size: 1.7rem;
+  text-align: left;
 `
 const Menu = styled.div`
   display: flex;
@@ -76,6 +78,7 @@ const Location = styled(Link)`
 `
 
 const Header = () => {
+  const navigate = useNavigate()
   const [input, setInput] = useState('')
   const handleChange = (e) => {
     setInput(e.target.value)
@@ -87,13 +90,18 @@ const Header = () => {
     }
   }
 
+  const handleClick = () => {
+    window.scrollTo(0, 0)
+    navigate('/')
+  }
+
   return (
     <Container>
       <h1>
-        <Link to="/">
+        <button onClick={handleClick}>
           <Title>HAJA</Title>
           <SubTitle>Happy Boardgame</SubTitle>
-        </Link>
+        </button>
       </h1>
       <Menu>
         <SearchContainer>
