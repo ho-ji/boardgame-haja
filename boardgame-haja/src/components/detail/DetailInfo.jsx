@@ -3,25 +3,41 @@ import {useEffect, useState} from 'react'
 import styled from 'styled-components'
 
 import {getDetailInfoAPI} from 'api'
+import DetailDescription from './DetailDescription'
 
 const Container = styled.main`
-  background: green;
-  margin: 10rem 30rem;
+  max-width: 50rem;
+  padding: 1rem;
+  margin: 10rem auto;
 `
-const Description = styled.p``
+const DetailContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const Name = styled.h2`
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+`
+const Year = styled.span`
+  font-weight: 500;
+  font-size: 2rem;
+`
 const Image = styled.img`
-  width: 5rem;
+  width: 80%;
 `
-const PlayerCount = styled.p``
-const PlayingTime = styled.p``
-const Age = styled.p``
-const Name = styled.p``
-const Year = styled.p``
-
-const descriptionFormat = (text) => {
-  const decodedElement = document.createElement('p')
-  decodedElement.innerHTML = text
-  return decodedElement.textContent
+const Information = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0 5rem 0;
+  padding: 1rem;
+  font-size: 1.8rem;
+`
+const formatString = (str1, str2) => {
+  return str1 === str2 ? str1 : `${str1}~${str2}`
 }
 
 const DetailInfo = () => {
@@ -44,15 +60,19 @@ const DetailInfo = () => {
     <Container>
       {info ? (
         <>
-          <Image src={info.image} />
-          <div>
-            <Name>{info.name}</Name>
-            <PlayerCount>{`${info.minplayers}~${info.maxplayers}`}</PlayerCount>
-            <PlayingTime>{`${info.minplaytime}~${info.maxplaytime}`}</PlayingTime>
-            <Age>{`${info.minage}+`}</Age>
-            <Year>{info.yearpublished}</Year>
-            <Description>{descriptionFormat(info.description)}</Description>
-          </div>
+          <DetailContainer>
+            <Name>
+              {info.name}
+              <Year>{`(${info.yearpublished})`}</Year>{' '}
+            </Name>
+            <Image src={info.image} />
+            <Information>
+              <p>{`👤${formatString(info.minplayers, info.maxplayers)} Players`}</p>
+              <p>{`⏰${formatString(info.minplaytime, info.maxplaytime)} Min`}</p>
+              <p>{`📅Age ${info.minage}+`}</p>
+            </Information>
+          </DetailContainer>
+          <DetailDescription description={info.description} />
         </>
       ) : (
         <span>Loading</span>
