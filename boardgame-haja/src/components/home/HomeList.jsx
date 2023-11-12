@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import HomeBoardGameCard from './HomeBoardGameCard'
 import {getBoardGameListAPI} from 'api'
+import Loading from 'components/common/Loading'
 
 const Title = styled.h2`
   text-align: center;
@@ -39,9 +40,9 @@ const HomeList = () => {
       <Title>
         <span className="a11y-hidden">Board Game </span>🔥Hot 50 <span className="a11y-hidden">List</span>
       </Title>
-      <ListContainer>
-        {gameList.length ? (
-          gameList.map((game, i) => {
+      {gameList.length ? (
+        <ListContainer>
+          {gameList.map((game, i) => {
             return (
               <HomeBoardGameCard
                 key={game.$.id}
@@ -52,11 +53,11 @@ const HomeList = () => {
                 ranking={i + 1}
               />
             )
-          })
-        ) : (
-          <span>Loading</span>
-        )}
-      </ListContainer>
+          })}
+        </ListContainer>
+      ) : (
+        <Loading />
+      )}
     </>
   )
 }
