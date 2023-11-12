@@ -6,12 +6,10 @@ const ScrollRestoration = () => {
   const history = createBrowserHistory()
   useEffect(() => {
     const unlisten = history.listen(({location}) => {
-      console.log(location)
       const scrollPosition = Number.parseInt(sessionStorage.getItem(`scroll${location.pathname}`), 10)
       if (scrollPosition) {
         setTimeout(() => {
           window.scrollTo(0, scrollPosition)
-          console.log(scrollPosition, window.scrollY)
         }, 100)
       }
     })
@@ -19,6 +17,7 @@ const ScrollRestoration = () => {
       unlisten()
     }
   }, [history])
+
   useEffect(() => {
     const handleScroll = throttle((e) => {
       sessionStorage.setItem(`scroll${window.location.pathname}`, window.scrollY)
