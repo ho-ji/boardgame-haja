@@ -6,7 +6,7 @@ const Container = styled.footer`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 20rem;
+  height: var(--footer-height);
   background: black;
   color: white;
   font-size: 1.8rem;

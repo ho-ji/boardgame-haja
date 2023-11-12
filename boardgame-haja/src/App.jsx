@@ -56,6 +56,7 @@ const GlobalStyle = createGlobalStyle`
   }
   :root {
     --header-height: 10rem;
+    --footer-height: 20rem;
   }
 `
 
