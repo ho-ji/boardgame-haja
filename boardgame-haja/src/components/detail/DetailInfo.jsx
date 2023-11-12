@@ -33,9 +33,13 @@ const Information = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 1rem 0 5rem 0;
-  padding: 1rem;
+  padding: 0 1rem;
   font-size: 1.8rem;
+`
+const Line = styled.hr`
+  width: 100%;
+  margin: 3rem 0;
+  border: 1px solid black;
 `
 const formatString = (str1, str2) => {
   return str1 === str2 ? str1 : `${str1}~${str2}`
@@ -67,11 +71,13 @@ const DetailInfo = () => {
               <Year>{`(${info.yearpublished})`}</Year>{' '}
             </Name>
             <Image src={info.image} />
+            <Line />
             <Information>
-              <p>{`👤${formatString(info.minplayers, info.maxplayers)} Players`}</p>
-              <p>{`⏰${formatString(info.minplaytime, info.maxplaytime)} Min`}</p>
-              <p>{`📅Age ${info.minage}+`}</p>
+              <p>{`👤 ${formatString(info.minplayers, info.maxplayers)} Players`}</p>
+              <p>{`⏰ ${formatString(info.minplaytime, info.maxplaytime)} Min`}</p>
+              <p>{`📅 Age ${info.minage}+`}</p>
             </Information>
+            <Line />
           </DetailContainer>
           <DetailDescription description={info.description} />
         </>
