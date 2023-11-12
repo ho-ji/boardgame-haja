@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import {getDetailInfoAPI} from 'api'
 import DetailDescription from './DetailDescription'
+import Loading from 'components/common/Loading'
 
 const Container = styled.main`
   max-width: 50rem;
@@ -75,7 +76,7 @@ const DetailInfo = () => {
           <DetailDescription description={info.description} />
         </>
       ) : (
-        <span>Loading</span>
+        <Loading />
       )}
     </Container>
   )
