@@ -44,3 +44,8 @@ export const getDetailInfoAPI = async (id) => {
   }
   return result
 }
+
+export const getSearchResultAPI = async (name) => {
+  const data = await getJSONToXML(`/search?query=${name}&&type=boardgame`)
+  return data.items.item
+}
