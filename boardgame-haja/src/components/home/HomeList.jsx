@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import styled from 'styled-components'
 
 import HomeBoardGameCard from './HomeBoardGameCard'
-import {getBoardGameListAPI} from 'api'
+import {getBoardGameListAPI} from 'api/api'
 import Loading from 'components/common/Loading'
 
 const Title = styled.h2`

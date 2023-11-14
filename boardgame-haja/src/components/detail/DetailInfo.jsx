@@ -2,7 +2,7 @@ import {useParams} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import styled from 'styled-components'
 
-import {getDetailInfoAPI} from 'api'
+import {getDetailInfoAPI} from 'api/api'
 import DetailDescription from './DetailDescription'
 import Loading from 'components/common/Loading'
 
