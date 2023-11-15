@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 import {getSearchResultAPI} from 'api/api'
 
@@ -7,11 +8,21 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  background: aqua;
+  background: white;
   width: 100%;
   left: 0;
-  top: -22rem;
+  top: 5rem;
+  border: 1px solid #a8a8a8;
+  border-radius: 2px;
 `
+const SearchItem = styled(Link)`
+  padding: 0.4rem 0.4rem;
+  &:hover {
+    background: #f1f1f1;
+  }
+`
+
+const Year = styled.span``
 
 const Search = ({keyword}) => {
   const [result, setResult] = useState([])
@@ -23,7 +34,6 @@ const Search = ({keyword}) => {
         clearTimeout(timeoutID)
       }
       timeoutID = setTimeout(async () => {
-        console.log('hi')
         try {
           const data = await getSearchResultAPI(keyword)
           setResult(data)
@@ -45,10 +55,12 @@ const Search = ({keyword}) => {
           {result ? (
             result.map((item) => {
               return (
-                <p key={item.id}>
+                <SearchItem
+                  to={`/detail/${item.id}`}
+                  key={item.id}>
                   {item.name}
-                  <span>{item.yearpublished}</span>
-                </p>
+                  <Year>{`(${item.yearpublished})`}</Year>
+                </SearchItem>
               )
             })
           ) : (
