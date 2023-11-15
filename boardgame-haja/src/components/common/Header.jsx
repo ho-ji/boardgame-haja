@@ -103,7 +103,7 @@ const Header = () => {
     }
   }
 
-  const handleClick = () => {
+  const handleLogoClick = () => {
     window.scrollTo(0, 0)
     navigate('/')
   }
@@ -122,7 +122,7 @@ const Header = () => {
   return (
     <Container>
       <h1>
-        <button onClick={handleClick}>
+        <button onClick={handleLogoClick}>
           <Title>HAJA</Title>
           <SubTitle>Happy Boardgame</SubTitle>
         </button>
