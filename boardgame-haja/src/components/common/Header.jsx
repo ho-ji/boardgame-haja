@@ -5,6 +5,7 @@ import {useState} from 'react'
 import imageDelete from 'assets/image/delete.svg'
 import imageSearch from 'assets/image/search.svg'
 import imageLocation from 'assets/image/location.svg'
+import Search from './Search'
 
 const Container = styled.header`
   display: flex;
@@ -40,7 +41,6 @@ const SearchContainer = styled.div`
   width: 20rem;
   height: 4rem;
   padding: 0 2.5rem;
-  overflow: hidden;
   position: relative;
   border-bottom: 1px solid black;
   &:hover,
@@ -120,6 +120,7 @@ const Header = () => {
             onKeyDown={handleKeyDown}
           />
           {input && <DeleteInputButton onClick={() => setInput('')} />}
+          {input && <Search keyword={input} />}
         </SearchContainer>
         <Location to="/">Nearby Cafe</Location>
       </Menu>
