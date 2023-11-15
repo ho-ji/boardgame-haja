@@ -1,6 +1,6 @@
 import {Link, useNavigate} from 'react-router-dom'
 import styled from 'styled-components'
-import {useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 
 import imageDelete from 'assets/image/delete.svg'
 import imageSearch from 'assets/image/search.svg'
@@ -88,12 +88,18 @@ const Location = styled(Link)`
 const Header = () => {
   const navigate = useNavigate()
   const [input, setInput] = useState('')
+  const [isSearch, setIsSearch] = useState(false)
+  const inputRef = useRef(null)
+
   const handleChange = (e) => {
     setInput(e.target.value)
+    setIsSearch(true)
   }
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       setInput('')
+    } else if (e.key === 'Escape') {
+      setIsSearch(false)
     }
   }
 
@@ -101,6 +107,17 @@ const Header = () => {
     window.scrollTo(0, 0)
     navigate('/')
   }
+
+  const handleOutsideClick = (e) => {
+    if (inputRef.current && !inputRef.current.contains(e.target)) setIsSearch(false)
+    else setIsSearch(true)
+  }
+  useEffect(() => {
+    window.addEventListener('click', handleOutsideClick)
+    return () => {
+      window.removeEventListener('click', handleOutsideClick)
+    }
+  }, [])
 
   return (
     <Container>
@@ -111,7 +128,7 @@ const Header = () => {
         </button>
       </h1>
       <Menu>
-        <SearchContainer>
+        <SearchContainer ref={inputRef}>
           <SearchInput
             type="text"
             placeholder="Search By Name..."
@@ -120,7 +137,7 @@ const Header = () => {
             onKeyDown={handleKeyDown}
           />
           {input && <DeleteInputButton onClick={() => setInput('')} />}
-          {input && <Search keyword={input} />}
+          {input && isSearch && <Search keyword={input} />}
         </SearchContainer>
         <Location to="/">Nearby Cafe</Location>
       </Menu>
