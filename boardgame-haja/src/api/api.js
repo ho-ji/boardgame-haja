@@ -47,5 +47,5 @@ export const getDetailInfoAPI = async (id) => {
 
 export const getSearchResultAPI = async (name) => {
   const data = await getJSONToXML(`/search?query=${name}&&type=boardgame`)
-  return data.items.item.map((v) => [v.name[0]?.$.value, v.yearpublished?.[0].$.value])
+  return data.items.item?.map((v) => ({id: v.$.id, name: v.name?.[0]?.$.value, yearpublished: v.yearpublished?.[0].$.value}))
 }
