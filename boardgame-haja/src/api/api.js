@@ -34,18 +34,18 @@ export const getDetailInfoAPI = async (id) => {
   const result = {
     description: tempData.description,
     image: tempData.image,
-    maxplayers: tempData.maxplayers[0]?.$.value,
-    minplayers: tempData.minplayers[0]?.$.value,
-    maxplaytime: tempData.maxplaytime[0]?.$.value,
-    minplaytime: tempData.minplaytime[0]?.$.value,
-    minage: tempData.minage[0]?.$.value,
-    name: tempData.name[0]?.$.value,
-    yearpublished: tempData.yearpublished[0]?.$.value,
+    maxplayers: tempData.maxplayers?.[0]?.$.value,
+    minplayers: tempData.minplayers?.[0]?.$.value,
+    maxplaytime: tempData.maxplaytime?.[0]?.$.value,
+    minplaytime: tempData.minplaytime?.[0]?.$.value,
+    minage: tempData.minage?.[0]?.$.value,
+    name: tempData.name?.[0]?.$.value,
+    yearpublished: tempData.yearpublished?.[0]?.$.value,
   }
   return result
 }
 
 export const getSearchResultAPI = async (name) => {
   const data = await getJSONToXML(`/search?query=${name}&&type=boardgame`)
-  return data.items.item
+  return data.items.item.map((v) => [v.name[0]?.$.value, v.yearpublished?.[0].$.value])
 }
