@@ -37,33 +37,41 @@ const Menu = styled.div`
 `
 
 const SearchContainer = styled.div`
-  display: flex;
-  align-items: center;
   width: 20rem;
   height: 4rem;
-  background-color: #fff;
+  padding: 0 2.5rem;
   overflow: hidden;
-  padding: 0.2rem 1rem;
+  position: relative;
   border-bottom: 1px solid black;
   &:hover,
   &:focus {
     border-bottom: 2px solid black;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 1.8rem;
+    height: 1.8rem;
+    background: url(${imageSearch}) no-repeat center / contain;
   }
 `
 const SearchInput = styled.input`
   width: 100%;
   height: 100%;
   border: none;
-  margin: 0 0.5rem;
   &::placeholder {
     color: black;
   }
 `
-const SearchIcon = styled.img`
-  width: 1.8erem;
-  height: 1.8rem;
-`
 const DeleteInputButton = styled.button`
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  right: 0;
+  padding: 1rem;
   width: 2.2rem;
   height: 2.2rem;
   background: url(${imageDelete}) no-repeat center / contain;
@@ -86,7 +94,6 @@ const Header = () => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       setInput('')
-      /*TODO Search API*/
     }
   }
 
@@ -105,10 +112,6 @@ const Header = () => {
       </h1>
       <Menu>
         <SearchContainer>
-          <SearchIcon
-            src={imageSearch}
-            alt="Search Image"
-          />
           <SearchInput
             type="text"
             placeholder="Search By Name..."
