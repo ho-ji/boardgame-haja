@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
 import {getSearchResultAPI} from 'api/api'
+import Loading from './Loading'
 
 const Container = styled.div`
   display: flex;
@@ -26,6 +27,7 @@ const Year = styled.span``
 
 const Search = ({keyword}) => {
   const [result, setResult] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     let timeoutID
@@ -34,9 +36,11 @@ const Search = ({keyword}) => {
         clearTimeout(timeoutID)
       }
       timeoutID = setTimeout(async () => {
+        setIsLoading(false)
         try {
           const data = await getSearchResultAPI(keyword)
           setResult(data)
+          setIsLoading(true)
         } catch (error) {
           console.error(error)
         }
@@ -53,16 +57,20 @@ const Search = ({keyword}) => {
       {keyword.length && (
         <Container>
           {result ? (
-            result.map((item) => {
-              return (
-                <SearchItem
-                  to={`/detail/${item.id}`}
-                  key={item.id}>
-                  {item.name}
-                  <Year>{`(${item.yearpublished})`}</Year>
-                </SearchItem>
-              )
-            })
+            isLoading ? (
+              result.map((item) => {
+                return (
+                  <SearchItem
+                    to={`/detail/${item.id}`}
+                    key={item.id}>
+                    {item.name}
+                    <Year>{`(${item.yearpublished})`}</Year>
+                  </SearchItem>
+                )
+              })
+            ) : (
+              <Loading />
+            )
           ) : (
             <span>No BoardGame Found</span>
           )}
