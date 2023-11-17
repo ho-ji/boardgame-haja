@@ -32,6 +32,7 @@ const NoResult = styled.p`
 const Search = ({keyword}) => {
   const [result, setResult] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     let timeoutID
@@ -56,6 +57,7 @@ const Search = ({keyword}) => {
       clearTimeout(timeoutID)
     }
   }, [keyword])
+
   return (
     <>
       {keyword.length && (
@@ -64,7 +66,7 @@ const Search = ({keyword}) => {
             isLoading ? (
               result.length !== 0 ? (
                 <>
-                  {result.map((item) => {
+                  {result.slice((page - 1) * 10, page * 10).map((item) => {
                     return (
                       <SearchItem
                         to={`/detail/${item.id}`}
@@ -74,6 +76,28 @@ const Search = ({keyword}) => {
                       </SearchItem>
                     )
                   })}
+                  {result.length > 10 && (
+                    <>
+                      {page > 1 ? (
+                        <button
+                          type="button"
+                          onClick={() => setPage(page - 1)}>
+                          {'<'}
+                        </button>
+                      ) : (
+                        <button disabled>{'<'}</button>
+                      )}
+                      {page < Math.ceil(result.length / 10) ? (
+                        <button
+                          type="button"
+                          onClick={() => setPage(page + 1)}>
+                          {'>'}
+                        </button>
+                      ) : (
+                        <button disabled>{'>'}</button>
+                      )}
+                    </>
+                  )}
                 </>
               ) : (
                 <NoResult>No BoardGame Found</NoResult>
