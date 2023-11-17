@@ -148,7 +148,7 @@ const Header = () => {
             />
           )}
         </SearchContainer>
-        <Location to="/">Nearby Cafe</Location>
+        <Location to="/map">Nearby Cafe</Location>
       </Menu>
     </Container>
   )

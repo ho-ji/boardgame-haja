@@ -6,6 +6,7 @@ import Home from 'pages/Home'
 import Detail from 'pages/Detail'
 import NotFound from 'pages/NotFound'
 import ScrollRestoration from 'components/common/ScrollRestoration'
+import Map from 'pages/Map'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -73,6 +74,10 @@ const App = () => {
         <Route
           path="/detail/:id"
           element={<Detail />}
+        />
+        <Route
+          path="/map"
+          element={<Map />}
         />
         <Route
           path="/*"
