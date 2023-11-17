@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import parse from 'html-react-parser'
+import he from 'he'
 
 const Title = styled.h3`
   font-size: 3rem;
@@ -11,13 +11,15 @@ const Line = styled.hr`
 `
 const Content = styled.p`
   line-height: 1.5;
+  white-space: pre-wrap;
 `
+
 const DetailDescription = ({description}) => {
   return (
     <>
       <Title>Description</Title>
       <Line />
-      {description && <Content>{parse(description.toString().replaceAll('&#10;', '<br/>'))}</Content>}
+      {description && <Content>{he.decode(description.toString())}</Content>}
     </>
   )
 }
