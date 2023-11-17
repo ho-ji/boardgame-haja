@@ -15,6 +15,8 @@ const Container = styled.div`
   top: 5rem;
   border: 1px solid #a8a8a8;
   border-radius: 2px;
+  overflow-y: auto;
+  max-height: 60vh;
 `
 const SearchItem = styled(Link)`
   padding: 0.4rem 0.4rem;
