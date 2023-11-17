@@ -38,6 +38,9 @@ const PageNumber = styled.div`
 `
 const PageButton = styled.button`
   color: #c4c4c4;
+  &:hover {
+    color: black;
+  }
   &.active {
     color: black;
     text-decoration: underline;
