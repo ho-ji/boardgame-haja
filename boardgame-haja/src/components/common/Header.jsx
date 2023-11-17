@@ -96,9 +96,7 @@ const Header = () => {
     setIsSearch(true)
   }
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      setInput('')
-    } else if (e.key === 'Escape') {
+    if (e.key === 'Escape') {
       setIsSearch(false)
     }
   }
@@ -112,6 +110,7 @@ const Header = () => {
     if (inputRef.current && !inputRef.current.contains(e.target)) setIsSearch(false)
     else setIsSearch(true)
   }
+
   useEffect(() => {
     window.addEventListener('click', handleOutsideClick)
     return () => {
