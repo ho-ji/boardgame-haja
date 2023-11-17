@@ -31,6 +31,12 @@ const NoResult = styled.p`
   text-decoration: underline;
 `
 
+const PageNumber = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0;
+`
+
 const Search = ({keyword}) => {
   const [result, setResult] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -79,7 +85,7 @@ const Search = ({keyword}) => {
                     )
                   })}
                   {result.length > 10 && (
-                    <>
+                    <PageNumber>
                       {page > 1 ? (
                         <button
                           type="button"
@@ -89,6 +95,19 @@ const Search = ({keyword}) => {
                       ) : (
                         <button disabled>{'<'}</button>
                       )}
+                      {Array.from({length: 5}, (_, index) => {
+                        const pageNumber = parseInt(Math.floor((page - 1) / 5)) * 5 + index + 1
+                        if (pageNumber <= Math.ceil(result.length / 10))
+                          return (
+                            <button
+                              type="button"
+                              key={pageNumber}
+                              onClick={() => setPage(pageNumber)}>
+                              {pageNumber}
+                            </button>
+                          )
+                        return null
+                      })}
                       {page < Math.ceil(result.length / 10) ? (
                         <button
                           type="button"
@@ -98,7 +117,7 @@ const Search = ({keyword}) => {
                       ) : (
                         <button disabled>{'>'}</button>
                       )}
-                    </>
+                    </PageNumber>
                   )}
                 </>
               ) : (
