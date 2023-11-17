@@ -56,16 +56,22 @@ const Search = ({keyword}) => {
         <Container>
           {result ? (
             isLoading ? (
-              result.map((item) => {
-                return (
-                  <SearchItem
-                    to={`/detail/${item.id}`}
-                    key={item.id}>
-                    {item.name}
-                    <span>{`(${item.yearpublished})`}</span>
-                  </SearchItem>
-                )
-              })
+              result.length !== 0 ? (
+                <>
+                  {result.map((item) => {
+                    return (
+                      <SearchItem
+                        to={`/detail/${item.id}`}
+                        key={item.id}>
+                        {item.name}
+                        <span>{`(${item.yearpublished})`}</span>
+                      </SearchItem>
+                    )
+                  })}
+                </>
+              ) : (
+                <span>No BoardGame Found</span>
+              )
             ) : (
               <Loading />
             )
