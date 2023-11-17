@@ -111,6 +111,11 @@ const Header = () => {
     else setIsSearch(true)
   }
 
+  const resetInput = () => {
+    setInput('')
+    setIsSearch(false)
+  }
+
   useEffect(() => {
     window.addEventListener('click', handleOutsideClick)
     return () => {
@@ -136,7 +141,12 @@ const Header = () => {
             onKeyDown={handleKeyDown}
           />
           {input && <DeleteInputButton onClick={() => setInput('')} />}
-          {input && isSearch && <Search keyword={input} />}
+          {input && isSearch && (
+            <Search
+              keyword={input}
+              resetInput={resetInput}
+            />
+          )}
         </SearchContainer>
         <Location to="/">Nearby Cafe</Location>
       </Menu>

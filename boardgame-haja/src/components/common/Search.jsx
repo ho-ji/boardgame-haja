@@ -37,7 +37,7 @@ const PageNumber = styled.div`
   margin: 1rem 0;
 `
 
-const Search = ({keyword}) => {
+const Search = ({keyword, resetInput}) => {
   const [result, setResult] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [page, setPage] = useState(1)
@@ -78,7 +78,8 @@ const Search = ({keyword}) => {
                     return (
                       <SearchItem
                         to={`/detail/${item.id}`}
-                        key={item.id}>
+                        key={item.id}
+                        onClick={resetInput}>
                         {item.name}
                         <span>{`(${item.yearpublished})`}</span>
                       </SearchItem>
