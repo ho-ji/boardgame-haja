@@ -36,6 +36,13 @@ const PageNumber = styled.div`
   justify-content: space-around;
   margin: 1rem 0;
 `
+const PageButton = styled.button`
+  color: #c4c4c4;
+  &.active {
+    color: black;
+    text-decoration: underline;
+  }
+`
 
 const Search = ({keyword, resetInput}) => {
   const [result, setResult] = useState([])
@@ -100,12 +107,13 @@ const Search = ({keyword, resetInput}) => {
                         const pageNumber = parseInt(Math.floor((page - 1) / 5)) * 5 + index + 1
                         if (pageNumber <= Math.ceil(result.length / 10))
                           return (
-                            <button
+                            <PageButton
                               type="button"
                               key={pageNumber}
+                              className={page === pageNumber && 'active'}
                               onClick={() => setPage(pageNumber)}>
                               {pageNumber}
-                            </button>
+                            </PageButton>
                           )
                         return null
                       })}
