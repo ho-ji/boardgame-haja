@@ -136,7 +136,7 @@ const Search = ({keyword, resetInput}) => {
                 <NoResult>No BoardGame Found</NoResult>
               )
             ) : (
-              <Loading />
+              <Loading customheight={'10rem'} />
             )
           ) : (
             <NoResult>No BoardGame Found</NoResult>

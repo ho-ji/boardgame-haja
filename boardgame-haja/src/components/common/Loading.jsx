@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Spinner = styled.span`
   position: relative;
   width: 100%;
-  height: calc(100vh - var(--header-height) - var(--footer-height));
+  height: ${({$customheight}) => $customheight || 'calc(100vh - var(--header-height) - var(--footer-height))'};
   display: block;
   margin: 0 auto;
   @keyframes spinner {
@@ -30,9 +30,9 @@ const Spinner = styled.span`
   }
 `
 
-const Loading = () => {
+const Loading = ({customheight}) => {
   return (
-    <Spinner>
+    <Spinner $customheight={customheight}>
       <span className="a11y-hidden">Loading</span>
     </Spinner>
   )
