@@ -22,6 +22,12 @@ const SearchItem = styled(Link)`
     background: #f1f1f1;
   }
 `
+const NoResult = styled.p`
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.4rem;
+  text-decoration: underline;
+`
 
 const Search = ({keyword}) => {
   const [result, setResult] = useState([])
@@ -70,13 +76,13 @@ const Search = ({keyword}) => {
                   })}
                 </>
               ) : (
-                <span>No BoardGame Found</span>
+                <NoResult>No BoardGame Found</NoResult>
               )
             ) : (
               <Loading />
             )
           ) : (
-            <span>No BoardGame Found</span>
+            <NoResult>No BoardGame Found</NoResult>
           )}
         </Container>
       )}
