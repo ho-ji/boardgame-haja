@@ -23,8 +23,6 @@ const SearchItem = styled(Link)`
   }
 `
 
-const Year = styled.span``
-
 const Search = ({keyword}) => {
   const [result, setResult] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -64,7 +62,7 @@ const Search = ({keyword}) => {
                     to={`/detail/${item.id}`}
                     key={item.id}>
                     {item.name}
-                    <Year>{`(${item.yearpublished})`}</Year>
+                    <span>{`(${item.yearpublished})`}</span>
                   </SearchItem>
                 )
               })
