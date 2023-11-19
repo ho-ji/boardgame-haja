@@ -31,8 +31,7 @@ const LocationBoardGameCafe = () => {
 
   useEffect(() => {
     if (currentLocation && map) {
-      const currentPosition = new kakao.maps.LatLng(currentLocation.latitude, currentLocation.longitude)
-      map.panTo(currentPosition)
+      map.setCenter(new kakao.maps.LatLng(currentLocation.latitude, currentLocation.longitude))
     }
   }, [currentLocation, map])
 
