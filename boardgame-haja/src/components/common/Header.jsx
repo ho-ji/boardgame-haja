@@ -1,4 +1,4 @@
-import {Link, useNavigate} from 'react-router-dom'
+import {Link, useLocation, useNavigate} from 'react-router-dom'
 import styled from 'styled-components'
 import {useEffect, useRef, useState} from 'react'
 
@@ -87,6 +87,7 @@ const Location = styled(Link)`
 
 const Header = () => {
   const navigate = useNavigate()
+  const {pathname} = useLocation()
   const [input, setInput] = useState('')
   const [isSearch, setIsSearch] = useState(false)
   const inputRef = useRef(null)
@@ -109,6 +110,10 @@ const Header = () => {
   const handleOutsideClick = (e) => {
     if (inputRef.current && !inputRef.current.contains(e.target)) setIsSearch(false)
     else setIsSearch(true)
+  }
+
+  const handleLocationClick = (e) => {
+    if (pathname === '/location') window.location.reload()
   }
 
   const resetInput = () => {
@@ -148,7 +153,11 @@ const Header = () => {
             />
           )}
         </SearchContainer>
-        <Location to="/location">Nearby Cafe</Location>
+        <Location
+          to="/location"
+          onClick={handleLocationClick}>
+          Nearby Cafe
+        </Location>
       </Menu>
     </Container>
   )
