@@ -1,6 +1,6 @@
 import Footer from 'components/common/Footer'
 import Header from 'components/common/Header'
-import MapBoardGameCafe from 'components/map/MapBoardGameCafe'
+import MapBoardGameCafe from 'components/location/LocationBoardGameCafe'
 
 const Location = () => {
   return (
