@@ -6,7 +6,7 @@ import Home from 'pages/Home'
 import Detail from 'pages/Detail'
 import NotFound from 'pages/NotFound'
 import ScrollRestoration from 'components/common/ScrollRestoration'
-import Map from 'pages/Map'
+import Location from 'pages/Location'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -76,8 +76,8 @@ const App = () => {
           element={<Detail />}
         />
         <Route
-          path="/map"
-          element={<Map />}
+          path="/location"
+          element={<Location />}
         />
         <Route
           path="/*"

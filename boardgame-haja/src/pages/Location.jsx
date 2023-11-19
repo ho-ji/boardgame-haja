@@ -1,13 +1,15 @@
 import Footer from 'components/common/Footer'
 import Header from 'components/common/Header'
+import MapBoardGameCafe from 'components/map/MapBoardGameCafe'
 
-const Map = () => {
+const Location = () => {
   return (
     <>
       <Header />
+      <MapBoardGameCafe />
       <Footer />
     </>
   )
 }
 
-export default Map
+export default Location
