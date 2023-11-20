@@ -18,7 +18,7 @@ const Map = styled.div`
 
 const LocationBoardGameCafe = () => {
   const mapRef = useRef(null)
-  const [map, setMap] = useState()
+  const [kakaoMap, setKakaoMap] = useState()
   const {location: currentLocation} = useCurrentLocation()
 
   useEffect(() => {
@@ -26,14 +26,14 @@ const LocationBoardGameCafe = () => {
       center: new kakao.maps.LatLng(37.553881, 126.970488),
       level: 6,
     }
-    setMap(new kakao.maps.Map(mapRef.current, options))
+    setKakaoMap(new kakao.maps.Map(mapRef.current, options))
   }, [currentLocation])
 
   useEffect(() => {
-    if (currentLocation && map) {
-      map.setCenter(new kakao.maps.LatLng(currentLocation.latitude, currentLocation.longitude))
+    if (currentLocation && kakaoMap) {
+      kakaoMap.setCenter(new kakao.maps.LatLng(currentLocation.latitude, currentLocation.longitude))
     }
-  }, [currentLocation, map])
+  }, [currentLocation, kakaoMap])
 
   return (
     <Container>
