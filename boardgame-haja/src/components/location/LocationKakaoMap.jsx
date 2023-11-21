@@ -32,7 +32,7 @@ const LocationKakaoMap = () => {
   }, [])
 
   useEffect(() => {
-    if (!kakaoMap) return
+    if (!kakaoMap || !currentLocation) return
     kakaoMap.setCenter(new window.kakao.maps.LatLng(currentLocation.latitude, currentLocation.longitude))
   }, [currentLocation, kakaoMap])
 
