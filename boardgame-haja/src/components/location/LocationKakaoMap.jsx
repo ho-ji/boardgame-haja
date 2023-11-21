@@ -47,9 +47,8 @@ const LocationKakaoMap = () => {
   const [kakaoMap, setKakaoMap] = useState(null)
 
   const handleCurrentLocationClick = () => {
-    const {currentLocation, error} = getCurrentLocation()
-    if (!error) kakaoMap.setCenter(new window.kakao.maps.LatLng(currentLocation.latitude, currentLocation.longitude))
-    else console.log(error)
+    const currentLocation = getCurrentLocation()
+    if (currentLocation) kakaoMap.panTo(new window.kakao.maps.LatLng(currentLocation.latitude, currentLocation.longitude))
   }
   const handleZoomInClick = () => {
     kakaoMap.setLevel(kakaoMap.getLevel() - 1)
@@ -66,7 +65,7 @@ const LocationKakaoMap = () => {
       window.kakao.maps.load(() => {
         const options = {
           center: new window.kakao.maps.LatLng(37.553881, 126.970488),
-          level: 4,
+          level: 3,
         }
         setKakaoMap(new window.kakao.maps.Map(mapRef.current, options))
       })
@@ -77,10 +76,11 @@ const LocationKakaoMap = () => {
   }, [])
 
   useEffect(() => {
-    const {currentLocation} = getCurrentLocation()
+    const currentLocation = getCurrentLocation()
     if (!kakaoMap) return
     if (currentLocation) kakaoMap.setCenter(new window.kakao.maps.LatLng(currentLocation.latitude, currentLocation.longitude))
     else kakaoMap.setCenter(new window.kakao.maps.LatLng(37.553881, 126.970488))
+    kakaoMap.setMaxLevel(6)
   }, [kakaoMap])
 
   return (
