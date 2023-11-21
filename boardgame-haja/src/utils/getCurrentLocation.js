@@ -1,12 +1,14 @@
-const location = {latitude: 0, longitude: 0}
+let currentLocation
+let error
 
 const handleSuccess = (pos) => {
   const {latitude, longitude} = pos.coords
-  location.latitude = latitude
-  location.longitude = longitude
+  currentLocation = {latitude: latitude, longitude: longitude}
 }
 
-const handleError = () => {}
+const handleError = (err) => {
+  error = err.message
+}
 
 const getCurrentLocation = () => {
   const {geolocation} = navigator
@@ -20,7 +22,7 @@ const getCurrentLocation = () => {
     maximumAge: 1000 * 3600 * 24,
   })
 
-  return location
+  return {currentLocation, error}
 }
 
 export default getCurrentLocation
