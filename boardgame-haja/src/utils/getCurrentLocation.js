@@ -13,7 +13,7 @@ const getCurrentLocation = () => {
 
   geolocation.getCurrentPosition(handleSuccess, null, {
     enableHighAccuracy: true,
-    timeout: 1000 * 60 * 1,
+    timeout: 2000 * 60 * 1,
     maximumAge: 1000 * 3600 * 24,
   })
 
