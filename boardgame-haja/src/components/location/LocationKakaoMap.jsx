@@ -105,6 +105,7 @@ const LocationKakaoMap = () => {
       placeInfo.setMap(null)
     }
   }
+
   useEffect(() => {
     const script = document.createElement('script')
     script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_MAP_API_KEY}&autoload=false&libraries=services`
@@ -165,6 +166,7 @@ const LocationKakaoMap = () => {
         displayPlaceInfo(place)
       })
     }
+
     const displayPlaceInfo = (place) => {
       const content = document.createElement('div')
       content.className = 'placeinfo'
@@ -207,6 +209,16 @@ const LocationKakaoMap = () => {
       placeInfo.setContent(content)
       placeInfo.setPosition(new window.kakao.maps.LatLng(place.y, place.x))
       placeInfo.setMap(kakaoMap)
+      const {width: mapWidth} = kakaoMap.getNode().getBoundingClientRect()
+      const {width: infoWidth, height: infoHeight} = placeInfo.getContent().getBoundingClientRect()
+
+      const {x, y} = kakaoMap.getProjection().containerPointFromCoords(placeInfo.getPosition())
+      let moveX = 0,
+        moveY = 0
+      if (y - infoHeight < 80) moveY = -infoHeight + y - 90
+      if (x < infoWidth / 2) moveX = x - infoWidth / 2 - 10
+      else if (x + infoWidth / 2 > mapWidth) moveX = -mapWidth + x + infoWidth / 2 + 50
+      kakaoMap.panBy(moveX, moveY)
     }
   }, [kakaoMap, placeInfo])
 
