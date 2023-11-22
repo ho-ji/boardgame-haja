@@ -84,7 +84,7 @@ const CurrentLocationButton = styled.button`
   background: url(${currentImage}) no-repeat center;
 `
 
-const LocationKakaoMap = () => {
+const LocationKakaoMap = ({setNearest}) => {
   const mapRef = useRef(null)
   const [kakaoMap, setKakaoMap] = useState(null)
   const [placeInfo, setPlaceInfo] = useState(null)
@@ -128,6 +128,7 @@ const LocationKakaoMap = () => {
   useEffect(() => {
     const currentLocation = getCurrentLocation()
     if (!kakaoMap) return
+    let nearest
     if (currentLocation) kakaoMap.setCenter(new window.kakao.maps.LatLng(currentLocation.latitude, currentLocation.longitude))
     else kakaoMap.setCenter(new window.kakao.maps.LatLng(37.553881, 126.970488))
     kakaoMap.setMaxLevel(8)
@@ -145,6 +146,8 @@ const LocationKakaoMap = () => {
             bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x))
           }
           kakaoMap.setBounds(bounds)
+          displayPlaceInfo(nearest)
+          setNearest(nearest)
         }
       },
       {
@@ -153,6 +156,7 @@ const LocationKakaoMap = () => {
     )
 
     const displayMarker = (place) => {
+      if (!nearest || parseInt(nearest.distance) > parseInt(place.distance)) nearest = place
       const imageSize = new window.kakao.maps.Size(50, 70)
       const makerImage = new window.kakao.maps.MarkerImage(diceImage, imageSize)
 
