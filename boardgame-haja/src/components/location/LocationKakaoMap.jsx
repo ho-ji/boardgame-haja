@@ -11,6 +11,7 @@ import getCurrentLocation from 'utils/getCurrentLocation'
 const Map = styled.div`
   width: 90rem;
   height: 60rem;
+  position: relative;
   .placeinfo {
     position: absolute;
     bottom: 7rem;
