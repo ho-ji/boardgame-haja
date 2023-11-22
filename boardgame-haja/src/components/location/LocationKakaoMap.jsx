@@ -224,7 +224,7 @@ const LocationKakaoMap = ({setNearest}) => {
       else if (x + infoWidth / 2 > mapWidth) moveX = -mapWidth + x + infoWidth / 2 + 50
       kakaoMap.panBy(moveX, moveY)
     }
-  }, [kakaoMap, placeInfo])
+  }, [kakaoMap, placeInfo, setNearest])
 
   return (
     <Map
