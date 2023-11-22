@@ -99,6 +99,11 @@ const LocationKakaoMap = () => {
   const handleZoomOutClick = () => {
     kakaoMap.setLevel(kakaoMap.getLevel() + 1)
   }
+  const handleMapClick = (e) => {
+    if (e.target.nodeName === 'svg' && placeInfo) {
+      placeInfo.setMap(null)
+    }
+  }
   useEffect(() => {
     const script = document.createElement('script')
     script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_MAP_API_KEY}&autoload=false&libraries=services`
@@ -155,7 +160,7 @@ const LocationKakaoMap = () => {
         image: makerImage,
       })
 
-      window.kakao.maps.event.addListener(marker, 'click', function () {
+      window.kakao.maps.event.addListener(marker, 'click', () => {
         displayPlaceInfo(place)
       })
     }
@@ -207,7 +212,8 @@ const LocationKakaoMap = () => {
   return (
     <Map
       id="map"
-      ref={mapRef}>
+      ref={mapRef}
+      onClick={handleMapClick}>
       <ControllContainer>
         <CurrentLocationButton
           type="button"
