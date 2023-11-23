@@ -36,6 +36,9 @@ const Distance = styled.span`
   font-size: 2.4rem;
   color: #555;
   margin-bottom: 3rem;
+  > strong {
+    text-decoration: underline;
+  }
 `
 
 const LocationBoardGameCafe = () => {
@@ -78,7 +81,9 @@ const LocationBoardGameCafe = () => {
           <NearestName>
             The nearest board game cafe is '<strong>{nearest?.place_name}</strong>'
           </NearestName>
-          <Distance>{`It is located about ${Math.ceil(nearest?.distance / 10) / 100}km away`}</Distance>
+          <Distance>
+            It is located about<strong> {Math.ceil(nearest?.distance / 10) / 100}km</strong> away
+          </Distance>
           <LocationKakaoMap setNearest={setNearest} />
         </>
       )}
