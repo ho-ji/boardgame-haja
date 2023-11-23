@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import {useState} from 'react'
 
 import LocationKakaoMap from './LocationKakaoMap'
+import LocationNaverMap from './LocationNaverMap'
 
 const Container = styled.main`
   display: flex;
@@ -39,7 +40,7 @@ const Distance = styled.span`
 
 const LocationBoardGameCafe = () => {
   const [nearest, setNearest] = useState()
-  const [mapType, setMapType] = useState('kakao')
+  const [mapType, setMapType] = useState('naver')
 
   const handleMapButtonClick = (type) => {
     setMapType(type)
@@ -67,7 +68,11 @@ const LocationBoardGameCafe = () => {
         </MapButton>
       </ButtonContainer>
       {mapType === 'google' && <></>}
-      {mapType === 'naver' && <></>}
+      {mapType === 'naver' && (
+        <>
+          <LocationNaverMap />
+        </>
+      )}
       {mapType === 'kakao' && (
         <>
           <NearestName>
