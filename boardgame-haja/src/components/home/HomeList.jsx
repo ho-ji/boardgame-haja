@@ -1,24 +1,10 @@
 import {useEffect, useState} from 'react'
-import styled from 'styled-components'
 
-import HomeBoardGameCard from './HomeBoardGameCard'
+import * as S from 'styles/home/HomeListStyle'
+
 import {getBoardGameListAPI} from 'api/api'
+import HomeBoardGameCard from './HomeBoardGameCard'
 import Loading from 'components/common/Loading'
-
-const Title = styled.h2`
-  text-align: center;
-  margin-top: 5rem;
-  font-size: 4rem;
-  font-weight: bold;
-`
-
-const ListContainer = styled.main`
-  display: grid;
-  margin: 5rem 20rem;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  grid-template-rows: auto;
-  gap: 2rem;
-`
 
 const HomeList = () => {
   const [gameList, setGameList] = useState([])
@@ -37,11 +23,11 @@ const HomeList = () => {
 
   return (
     <>
-      <Title>
+      <S.Title>
         <span className="a11y-hidden">Board Game </span>🔥Hot 50 <span className="a11y-hidden">List</span>
-      </Title>
+      </S.Title>
       {gameList.length ? (
-        <ListContainer>
+        <S.ListContainer>
           {gameList.map((game, i) => {
             return (
               <HomeBoardGameCard
@@ -54,7 +40,7 @@ const HomeList = () => {
               />
             )
           })}
-        </ListContainer>
+        </S.ListContainer>
       ) : (
         <Loading />
       )}
