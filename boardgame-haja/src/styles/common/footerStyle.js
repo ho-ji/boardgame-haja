@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {BREAKPOINT_MOBILE, mediaQueris} from 'styles/mediaQuery'
 
 export const Container = styled.footer`
   display: flex;
@@ -11,6 +12,9 @@ export const Container = styled.footer`
   color: white;
   font-size: 1.8rem;
   text-align: center;
+  ${mediaQueris(BREAKPOINT_MOBILE)} {
+    font-size: 1.4rem;
+  }
 `
 export const GitHubLink = styled.a`
   margin-top: 2rem;
@@ -24,5 +28,9 @@ export const GitHubLink = styled.a`
   &:hover {
     color: white;
     background: black;
+  }
+  ${mediaQueris(BREAKPOINT_MOBILE)} {
+    margin-top: 1.2rem;
+    padding: 0.5rem 1rem;
   }
 `

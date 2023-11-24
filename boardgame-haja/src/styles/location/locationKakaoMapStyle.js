@@ -4,10 +4,11 @@ import closeImage from 'assets/image/close.svg'
 import currentImage from 'assets/image/current.svg'
 import zoomInImage from 'assets/image/zoomin.svg'
 import zoomOutImage from 'assets/image/zoomout.svg'
+import {BREAKPOINT_MOBILE, BREAKPOINT_TABLET, mediaQueris} from 'styles/mediaQuery'
 
 export const Map = styled.div`
   width: 90rem;
-  height: 60rem;
+  aspect-ratio: 3/2;
   position: relative;
   .placeinfo {
     position: absolute;
@@ -47,6 +48,24 @@ export const Map = styled.div`
       top: 0.5rem;
     }
   }
+  ${mediaQueris(BREAKPOINT_TABLET)} {
+    width: 60rem;
+  }
+  ${mediaQueris(BREAKPOINT_MOBILE)} {
+    width: 80%;
+    aspect-ratio: 1/1;
+    .placeinfo {
+      padding: 0.5rem;
+      gap: 0.5rem;
+      .name {
+        font-weight: bold;
+        font-size: 1.6rem;
+      }
+      .link {
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
 `
 
 export const ControllContainer = styled.div`
@@ -66,6 +85,12 @@ export const ControllContainer = styled.div`
     background-color: white;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
+  ${mediaQueris(BREAKPOINT_MOBILE)} {
+    > button {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
 `
 export const ZoomOutButton = styled.button`
   background: url(${zoomOutImage}) no-repeat center;
@@ -78,4 +103,7 @@ export const ZoomInButton = styled.button`
 export const CurrentLocationButton = styled.button`
   margin-bottom: 2rem;
   background: url(${currentImage}) no-repeat center;
+  ${mediaQueris(BREAKPOINT_MOBILE)} {
+    margin-bottom: 1rem;
+  }
 `

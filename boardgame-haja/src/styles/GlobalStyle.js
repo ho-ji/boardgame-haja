@@ -1,5 +1,6 @@
 import {createGlobalStyle} from 'styled-components'
 import reset from 'styled-reset'
+import {BREAKPOINT_MOBILE, BREAKPOINT_TABLET, mediaQueris} from './mediaQuery'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -30,6 +31,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: Century Gothic, sans-serif;
     line-height: 1.3;
   }
+  ${mediaQueris(BREAKPOINT_MOBILE)}{
+    body{
+      font-size: 1.4rem;
+    }
+  }
   a{
     text-decoration: none;
     font-size: inherit;
@@ -51,6 +57,18 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --header-height: 10rem;
     --footer-height: 20rem;
+  }
+  ${mediaQueris(BREAKPOINT_TABLET)}{
+    :root {
+    --header-height: 8rem;
+    --footer-height: 18rem;
+    }
+  }
+  ${mediaQueris(BREAKPOINT_MOBILE)}{
+    :root {
+    --header-height: 6rem;
+    --footer-height: 16rem;
+    }
   }
 `
 export default GlobalStyle

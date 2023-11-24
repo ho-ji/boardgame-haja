@@ -1,9 +1,11 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
+
+import {BREAKPOINT_MOBILE, BREAKPOINT_TABLET, mediaQueris} from 'styles/mediaQuery'
 
 import imageDelete from 'assets/image/delete.svg'
 import imageSearch from 'assets/image/search.svg'
 import imageLocation from 'assets/image/location.svg'
-import {Link} from 'react-router-dom'
 
 export const Container = styled.header`
   display: flex;
@@ -17,22 +19,44 @@ export const Container = styled.header`
   position: sticky;
   top: 0;
   z-index: 100;
+  > h1 {
+    flex: 1;
+  }
+  ${mediaQueris(BREAKPOINT_MOBILE)} {
+    padding: 0 0.8rem;
+  }
 `
 export const Title = styled.p`
   font-size: 4.5rem;
   font-weight: bold;
   line-height: 0.7;
   text-align: left;
+  ${mediaQueris(BREAKPOINT_TABLET)} {
+    font-size: 3rem;
+  }
+  ${mediaQueris(BREAKPOINT_MOBILE)} {
+    font-size: 2rem;
+  }
 `
 export const SubTitle = styled.p`
   font-size: 1.7rem;
   text-align: left;
+  white-space: nowrap;
+  ${mediaQueris(BREAKPOINT_TABLET)} {
+    font-size: 1.6rem;
+  }
+  ${mediaQueris(BREAKPOINT_MOBILE)} {
+    font-size: 1.4rem;
+  }
 `
 export const Menu = styled.div`
   display: flex;
   height: 100%;
   gap: 2rem;
   align-items: center;
+  ${mediaQueris(BREAKPOINT_MOBILE)} {
+    gap: 1rem;
+  }
 `
 
 export const SearchContainer = styled.div`
@@ -55,6 +79,15 @@ export const SearchContainer = styled.div`
     height: 1.8rem;
     background: url(${imageSearch}) no-repeat center / contain;
   }
+  ${mediaQueris(BREAKPOINT_MOBILE)} {
+    width: 15rem;
+    height: 3.5rem;
+    padding: 0 2.2rem;
+    &::before {
+      width: 1.6em;
+      height: 1.6rem;
+    }
+  }
 `
 export const SearchInput = styled.input`
   width: 100%;
@@ -73,6 +106,10 @@ export const DeleteInputButton = styled.button`
   width: 2.2rem;
   height: 2.2rem;
   background: url(${imageDelete}) no-repeat center / contain;
+  ${mediaQueris(BREAKPOINT_MOBILE)} {
+    width: 2rem;
+    height: 2rem;
+  }
 `
 export const Location = styled(Link)`
   background: url(${imageLocation}) no-repeat left / 2rem 2rem;
@@ -80,5 +117,10 @@ export const Location = styled(Link)`
   font-size: 1.6rem;
   &:hover {
     color: gray;
+  }
+  ${mediaQueris(BREAKPOINT_MOBILE)} {
+    > span {
+      display: none;
+    }
   }
 `

@@ -76,7 +76,7 @@ const Header = () => {
         <S.Location
           to="/location"
           onClick={handleLocationClick}>
-          Nearby Cafe
+          <span>Nearby Cafe</span>
         </S.Location>
       </S.Menu>
     </S.Container>
