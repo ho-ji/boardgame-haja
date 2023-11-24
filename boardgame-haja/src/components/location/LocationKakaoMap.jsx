@@ -4,6 +4,7 @@ import * as S from 'styles/location/locationKakaoMapStyle'
 
 import diceImage from 'assets/image/dice.svg'
 import getCurrentLocation from 'utils/getCurrentLocation'
+import {getplaceImageSize} from 'styles/mediaQuery'
 
 const LocationKakaoMap = ({setNearest}) => {
   const mapRef = useRef(null)
@@ -44,7 +45,7 @@ const LocationKakaoMap = ({setNearest}) => {
     return () => {
       document.head.removeChild(script)
     }
-  }, [])
+  }, [mapRef])
 
   useEffect(() => {
     const currentLocation = getCurrentLocation()
@@ -55,6 +56,7 @@ const LocationKakaoMap = ({setNearest}) => {
     kakaoMap.setMaxLevel(8)
 
     const place = new window.kakao.maps.services.Places()
+    const placeImagesize = getplaceImageSize()
 
     place.keywordSearch(
       '보드게임',
@@ -78,7 +80,7 @@ const LocationKakaoMap = ({setNearest}) => {
 
     const displayMarker = (place) => {
       if (!nearest || parseInt(nearest.distance) > parseInt(place.distance)) nearest = place
-      const imageSize = new window.kakao.maps.Size(50, 70)
+      const imageSize = new window.kakao.maps.Size(placeImagesize, placeImagesize)
       const makerImage = new window.kakao.maps.MarkerImage(diceImage, imageSize)
 
       const marker = new window.kakao.maps.Marker({
@@ -140,7 +142,7 @@ const LocationKakaoMap = ({setNearest}) => {
       const {x, y} = kakaoMap.getProjection().containerPointFromCoords(placeInfo.getPosition())
       let moveX = 0,
         moveY = 0
-      if (y - infoHeight < 80) moveY = -infoHeight + y - 90
+      if (y - infoHeight - placeImagesize < 0) moveY = y - placeImagesize - 20 - infoHeight
       if (x < infoWidth / 2) moveX = x - infoWidth / 2 - 10
       else if (x + infoWidth / 2 > mapWidth) moveX = -mapWidth + x + infoWidth / 2 + 50
       kakaoMap.panBy(moveX, moveY)

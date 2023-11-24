@@ -50,6 +50,9 @@ export const Map = styled.div`
   }
   ${mediaQueris(BREAKPOINT_TABLET)} {
     width: 60rem;
+    .placeinfo {
+      bottom: 5rem;
+    }
   }
   ${mediaQueris(BREAKPOINT_MOBILE)} {
     width: 80%;
@@ -57,6 +60,7 @@ export const Map = styled.div`
     .placeinfo {
       padding: 0.5rem;
       gap: 0.5rem;
+      bottom: 3.2rem;
       .name {
         font-weight: bold;
         font-size: 1.6rem;
