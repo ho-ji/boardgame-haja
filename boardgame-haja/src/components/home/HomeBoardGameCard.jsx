@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 
-import * as S from 'styles/home/HomeBoardGameCardStyle'
+import * as S from 'styles/home/homeBoardGameCardStyle'
 
 const HomeBoardGameCard = (props) => {
   return (

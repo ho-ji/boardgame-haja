@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from 'react'
 
-import * as S from 'styles/location/LocationKakaoMapStyle'
+import * as S from 'styles/location/locationKakaoMapStyle'
 
 import diceImage from 'assets/image/dice.svg'
 import getCurrentLocation from 'utils/getCurrentLocation'

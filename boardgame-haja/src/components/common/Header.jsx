@@ -1,7 +1,7 @@
 import {useLocation, useNavigate} from 'react-router-dom'
 import {useEffect, useRef, useState} from 'react'
 
-import * as S from 'styles/common/HeaderStyle'
+import * as S from 'styles/common/headerStyle'
 
 import Search from './Search'
 

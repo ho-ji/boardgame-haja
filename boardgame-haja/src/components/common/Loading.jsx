@@ -1,4 +1,4 @@
-import * as S from 'styles/common/LoadingStyle'
+import * as S from 'styles/common/loadingStyle'
 
 const Loading = ({customheight}) => {
   return (

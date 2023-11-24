@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 
-import * as S from 'styles/common/SearchStyle'
+import * as S from 'styles/common/searchStyle'
 
 import {getSearchResultAPI} from 'api/api'
 import Loading from './Loading'

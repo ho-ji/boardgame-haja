@@ -1,6 +1,6 @@
 import he from 'he'
 
-import * as S from 'styles/detail/DetailDescriptionStyle'
+import * as S from 'styles/detail/detailDescriptionStyle'
 
 const DetailDescription = ({description}) => {
   return (

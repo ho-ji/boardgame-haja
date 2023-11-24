@@ -1,7 +1,7 @@
 import {useParams} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 
-import * as S from 'styles/detail/DetailInfoStyle'
+import * as S from 'styles/detail/detailInfoStyle'
 
 import {getDetailInfoAPI} from 'api/api'
 import DetailDescription from './DetailDescription'

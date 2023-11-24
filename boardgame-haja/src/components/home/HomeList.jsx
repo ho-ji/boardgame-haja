@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 
-import * as S from 'styles/home/HomeListStyle'
+import * as S from 'styles/home/homeListStyle'
 
 import {getBoardGameListAPI} from 'api/api'
 import HomeBoardGameCard from './HomeBoardGameCard'

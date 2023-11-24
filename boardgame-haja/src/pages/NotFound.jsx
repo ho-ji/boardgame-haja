@@ -1,6 +1,6 @@
 import {useNavigate} from 'react-router-dom'
 
-import * as S from 'styles/NotFoundStyle'
+import * as S from 'styles/notFoundStyle'
 
 import Header from 'components/common/Header'
 import imageBrokenLink from 'assets/image/brokenlink.svg'
