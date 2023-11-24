@@ -13,8 +13,8 @@ const HomeList = () => {
     try {
       const boardGameList = await getBoardGameListAPI()
       setGameList(boardGameList)
-    } catch (e) {
-      console.error(e)
+    } catch (error) {
+      console.error(error)
     }
   }
   useEffect(() => {
