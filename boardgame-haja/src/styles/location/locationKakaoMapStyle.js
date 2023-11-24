@@ -24,6 +24,7 @@ export const Map = styled.div`
     .name {
       font-weight: bold;
       font-size: 1.8rem;
+      padding-right: 3rem;
     }
     .address2 {
       color: #a4a4a4;

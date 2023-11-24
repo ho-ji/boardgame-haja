@@ -5,7 +5,7 @@ import * as S from 'styles/location/locationBoardGameCardStyle'
 import LocationKakaoMap from './LocationKakaoMap'
 
 const LocationBoardGameCafe = () => {
-  const [nearest, setNearest] = useState()
+  const [nearest, setNearest] = useState({place_name: '', distance: ''})
 
   return (
     <S.Container>

@@ -10,12 +10,16 @@ const LocationKakaoMap = ({setNearest}) => {
   const mapRef = useRef(null)
   const [kakaoMap, setKakaoMap] = useState(null)
   const [placeInfo, setPlaceInfo] = useState(null)
+  const [current, setCurrent] = useState(null)
 
-  const handleCurrentLocationClick = () => {
-    const currentLocation = getCurrentLocation()
-    if (currentLocation) kakaoMap.panTo(new window.kakao.maps.LatLng(currentLocation.latitude, currentLocation.longitude))
-    else alert('Failed to retrieve the current location')
+  const handleCurrentLocationClick = async () => {
+    if (current) {
+      kakaoMap.setCenter(new window.kakao.maps.LatLng(current.latitude, current.longitude))
+    } else {
+      alert('Fail to load current location! Retry...')
+    }
   }
+
   const handleZoomInClick = () => {
     kakaoMap.setLevel(kakaoMap.getLevel() - 1)
   }
@@ -48,13 +52,26 @@ const LocationKakaoMap = ({setNearest}) => {
   }, [mapRef])
 
   useEffect(() => {
-    const currentLocation = getCurrentLocation()
     if (!kakaoMap) return
-    let nearest
-    if (currentLocation) kakaoMap.setCenter(new window.kakao.maps.LatLng(currentLocation.latitude, currentLocation.longitude))
-    else kakaoMap.setCenter(new window.kakao.maps.LatLng(37.553881, 126.970488))
-    kakaoMap.setMaxLevel(8)
+    const getCurrent = async () => {
+      try {
+        kakaoMap.setMaxLevel(8)
+        const currentLocation = await getCurrentLocation()
+        kakaoMap.setCenter(new window.kakao.maps.LatLng(currentLocation.latitude, currentLocation.longitude))
+        setCurrent(currentLocation)
+      } catch (error) {
+        console.error(error)
+        kakaoMap.setCenter(new window.kakao.maps.LatLng(37.553881, 126.970488))
+        setCurrent({latitude: 37.553881, longitude: 126.970488})
+      }
+    }
+    getCurrent()
+  }, [kakaoMap])
 
+  useEffect(() => {
+    if (!kakaoMap) return
+    if (!current) return
+    let nearest
     const place = new window.kakao.maps.services.Places()
     const placeImagesize = getplaceImageSize()
 
@@ -147,7 +164,7 @@ const LocationKakaoMap = ({setNearest}) => {
       else if (x + infoWidth / 2 > mapWidth) moveX = -mapWidth + x + infoWidth / 2 + 50
       kakaoMap.panBy(moveX, moveY)
     }
-  }, [kakaoMap, placeInfo, setNearest])
+  }, [kakaoMap, placeInfo, setNearest, current])
 
   return (
     <S.Map
