@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 import {BREAKPOINT_MOBILE, BREAKPOINT_TABLET, mediaQueris} from 'styles/mediaQuery'
 
+export const Container = styled.main`
+  max-width: 180rem;
+  margin: 0 auto;
+`
+
 export const Title = styled.h2`
   text-align: center;
   margin-top: 5rem;

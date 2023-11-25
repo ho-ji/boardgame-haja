@@ -22,7 +22,7 @@ const HomeList = () => {
   }, [])
 
   return (
-    <main>
+    <S.Container>
       <S.Title>
         <span className="a11y-hidden">Board Game </span>🔥Hot 50 <span className="a11y-hidden">List</span>
       </S.Title>
@@ -44,7 +44,7 @@ const HomeList = () => {
       ) : (
         <Loading />
       )}
-    </main>
+    </S.Container>
   )
 }
 
