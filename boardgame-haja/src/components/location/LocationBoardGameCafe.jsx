@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 import * as S from 'styles/location/locationBoardGameCafeStyle'
 
@@ -6,6 +6,10 @@ import LocationKakaoMap from './LocationKakaoMap'
 
 const LocationBoardGameCafe = () => {
   const [nearest, setNearest] = useState({place_name: '', distance: ''})
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <S.Container>
