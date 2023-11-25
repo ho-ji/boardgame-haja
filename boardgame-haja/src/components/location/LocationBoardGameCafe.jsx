@@ -9,6 +9,7 @@ const LocationBoardGameCafe = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    window.history.scrollRestoration = 'manual'
   }, [])
 
   return (
