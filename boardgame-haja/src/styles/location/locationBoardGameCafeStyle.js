@@ -7,6 +7,7 @@ export const Container = styled.main`
   align-items: center;
   justify-content: center;
   margin: 10rem 0;
+  min-height: calc(100vh - var(--footer-height) - var(--header-height));
   ${mediaQueris(BREAKPOINT_TABLET)} {
     margin: 8rem 0;
   }
