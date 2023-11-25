@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-import * as S from 'styles/location/locationBoardGameCardStyle'
+import * as S from 'styles/location/locationBoardGameCafeStyle'
 
 import LocationKakaoMap from './LocationKakaoMap'
 
