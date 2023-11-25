@@ -60,7 +60,6 @@ const LocationKakaoMap = ({setNearest}) => {
         kakaoMap.setCenter(new window.kakao.maps.LatLng(currentLocation.latitude, currentLocation.longitude))
         setCurrent(currentLocation)
       } catch (error) {
-        console.error(error)
         kakaoMap.setCenter(new window.kakao.maps.LatLng(37.553881, 126.970488))
         setCurrent({latitude: 37.553881, longitude: 126.970488})
       }
