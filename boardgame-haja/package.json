@@ -1,6 +1,6 @@
 {
   "name": "boardgame-haja",
-  "homepage": "https://ho-ji.github.io/boardgame-haja/",
+  "homepage": "https://boardgame-haja.netlify.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -25,8 +25,6 @@
     "xml2js": "^0.6.2"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -51,7 +49,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1",
     "stream-browserify": "^3.0.0"
   }
 }
