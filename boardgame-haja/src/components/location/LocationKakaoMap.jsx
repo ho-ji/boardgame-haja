@@ -32,6 +32,7 @@ const LocationKakaoMap = ({setNearest}) => {
     }
   }
 
+  //카카오맵 생성
   useEffect(() => {
     const script = document.createElement('script')
     script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_MAP_API_KEY}&autoload=false&libraries=services`
@@ -51,6 +52,7 @@ const LocationKakaoMap = ({setNearest}) => {
     }
   }, [mapRef])
 
+  //현재위치 불러와서 지도 위치 변경
   useEffect(() => {
     if (!kakaoMap) return
     const getCurrent = async () => {
@@ -67,26 +69,25 @@ const LocationKakaoMap = ({setNearest}) => {
     getCurrent()
   }, [kakaoMap])
 
+  //보드게임카페 위치 마커 생성
   useEffect(() => {
     if (!kakaoMap) return
     if (!current) return
-    let nearest
     const place = new window.kakao.maps.services.Places()
     const placeImagesize = getplaceImageSize()
 
+    //보드게임 검색
     place.keywordSearch(
       '보드게임',
       (data, status, _) => {
         if (status === window.kakao.maps.services.Status.OK) {
-          const bounds = new window.kakao.maps.LatLngBounds()
-
+          data.sort((a, b) => a.distance - b.distance)
           for (let i = 0; i < data.length; i++) {
             displayMarker(data[i])
-            bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x))
           }
-          kakaoMap.setBounds(bounds)
-          displayPlaceInfo(nearest)
-          setNearest(nearest)
+          kakaoMap.setCenter(new window.kakao.maps.LatLng(data[0].y, data[0].x))
+          displayPlaceInfo(data[0])
+          setNearest(data[0])
         }
       },
       {
@@ -94,8 +95,8 @@ const LocationKakaoMap = ({setNearest}) => {
       }
     )
 
+    //마커생성
     const displayMarker = (place) => {
-      if (!nearest || parseInt(nearest.distance) > parseInt(place.distance)) nearest = place
       const imageSize = new window.kakao.maps.Size(placeImagesize, placeImagesize)
       const makerImage = new window.kakao.maps.MarkerImage(diceImage, imageSize)
 
@@ -110,6 +111,7 @@ const LocationKakaoMap = ({setNearest}) => {
       })
     }
 
+    //마커 위 장소 정보 생성
     const displayPlaceInfo = (place) => {
       const content = document.createElement('div')
       content.className = 'placeinfo'
@@ -152,9 +154,10 @@ const LocationKakaoMap = ({setNearest}) => {
       placeInfo.setContent(content)
       placeInfo.setPosition(new window.kakao.maps.LatLng(place.y, place.x))
       placeInfo.setMap(kakaoMap)
-      const {width: mapWidth} = kakaoMap.getNode().getBoundingClientRect()
-      const {width: infoWidth, height: infoHeight} = placeInfo.getContent().getBoundingClientRect()
 
+      //장소 정보 맵 영역 벗어날 시 지도 이동
+      const {width: mapWidth} = kakaoMap.getNode().getBoundingClientRect()
+      const {clientWidth: infoWidth, clientHeight: infoHeight} = placeInfo.getContent()
       const {x, y} = kakaoMap.getProjection().containerPointFromCoords(placeInfo.getPosition())
       let moveX = 0,
         moveY = 0

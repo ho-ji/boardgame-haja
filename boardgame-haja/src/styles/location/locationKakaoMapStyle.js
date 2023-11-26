@@ -47,6 +47,11 @@ export const Map = styled.div`
       background: url(${closeImage}) no-repeat center/3rem 3rem;
       right: 1rem;
       top: 0.5rem;
+      ${mediaQueris(BREAKPOINT_MOBILE)} {
+        width: 1.5rem;
+        height: 1.5rem;
+        right: 0.5rem;
+      }
     }
   }
   ${mediaQueris(BREAKPOINT_TABLET)} {
