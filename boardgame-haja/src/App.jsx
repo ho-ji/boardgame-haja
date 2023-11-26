@@ -9,7 +9,7 @@ import GlobalStyle from 'styles/GlobalStyle'
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/boardgame-haja">
       <ScrollRestoration />
       <GlobalStyle />
       <Routes>
