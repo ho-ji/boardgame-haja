@@ -30,12 +30,9 @@ const SrcollToTop = () => {
   return (
     <>
       {show && (
-        <>
-          <S.Button onClick={handleScrollToTopClick}>
-            <span className="a11y-hidden">scroll to top</span>
-          </S.Button>
-          <p>{navigator.userAgent}</p>
-        </>
+        <S.Button onClick={handleScrollToTopClick}>
+          <span className="a11y-hidden">scroll to top</span>
+        </S.Button>
       )}
     </>
   )
