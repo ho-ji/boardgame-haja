@@ -9,10 +9,14 @@ const SrcollToTop = () => {
   }
 
   const handleScrollToTopClick = () => {
-    window.scroll({
-      top: 0,
-      behavior: 'smooth',
-    })
+    const scrollStep = window.scrollY / 20
+    const scrollInterval = () => {
+      if (window.scrollY !== 0) {
+        window.scrollBy(0, -scrollStep)
+        requestAnimationFrame(scrollInterval)
+      }
+    }
+    requestAnimationFrame(scrollInterval)
   }
 
   useEffect(() => {
