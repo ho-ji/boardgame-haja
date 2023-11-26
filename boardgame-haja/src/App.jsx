@@ -9,7 +9,7 @@ import GlobalStyle from 'styles/GlobalStyle'
 
 const App = () => {
   return (
-    <BrowserRouter basename="/boardgame-haja">
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <ScrollRestoration />
       <GlobalStyle />
       <Routes>
