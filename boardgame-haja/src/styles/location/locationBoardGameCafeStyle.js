@@ -5,14 +5,13 @@ export const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin: 10rem 0;
+  padding: 10rem 0;
   min-height: calc(100vh - var(--footer-height) - var(--header-height));
   ${mediaQueris(BREAKPOINT_TABLET)} {
-    margin: 8rem 0;
+    padding: 8rem 0;
   }
   ${mediaQueris(BREAKPOINT_MOBILE)} {
-    margin: 3rem 1rem;
+    padding: 3rem 1rem;
   }
 `
 
