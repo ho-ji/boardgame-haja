@@ -2,7 +2,7 @@ import {throttle} from 'lodash'
 import {useEffect} from 'react'
 import {createBrowserHistory} from 'history'
 
-const ScrollRestoration = () => {
+const useScrollRestoration = () => {
   const history = createBrowserHistory()
   useEffect(() => {
     const unlisten = history.listen(({location}) => {
@@ -30,4 +30,4 @@ const ScrollRestoration = () => {
   }, [])
 }
 
-export default ScrollRestoration
+export default useScrollRestoration

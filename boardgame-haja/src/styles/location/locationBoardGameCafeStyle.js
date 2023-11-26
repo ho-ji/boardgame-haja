@@ -6,7 +6,7 @@ export const Container = styled.main`
   flex-direction: column;
   align-items: center;
   padding: 10rem 0;
-  min-height: calc(100vh - var(--footer-height) - var(--header-height));
+  min-height: calc(var(--vh, 1vh) * 100 - var(--footer-height) - var(--header-height));
   ${mediaQueris(BREAKPOINT_TABLET)} {
     padding: 8rem 0;
   }

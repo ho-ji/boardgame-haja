@@ -7,7 +7,7 @@ export const Container = styled.main`
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: calc(100vh - var(--header-height));
+  height: calc(var(--vh, 1vh) * 100 - var(--header-height));
 `
 export const Image = styled.img`
   width: 10rem;
