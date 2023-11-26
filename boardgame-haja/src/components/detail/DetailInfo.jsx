@@ -37,7 +37,10 @@ const DetailInfo = () => {
               {info.name}
               <S.Year>{`(${info.yearpublished})`}</S.Year>{' '}
             </S.Name>
-            <S.Image src={info.image} />
+            <S.Image
+              src={info.image}
+              decoding="async"
+            />
             <S.Line />
             <S.Information>
               <p>{`👤 ${formatString(info.minplayers, info.maxplayers)} Players`}</p>
