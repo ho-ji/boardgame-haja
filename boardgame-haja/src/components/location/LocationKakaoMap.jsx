@@ -131,11 +131,16 @@ const LocationKakaoMap = ({setNearest}) => {
       address2.textContent = `(지번 : ${place.address_name})`
       content.appendChild(address2)
 
-      const phoneOrSpan = place.phone ? `<address class="phone">${place.phone}</address>` : '<span>등록된 번호가 없습니다</span>'
-
-      const phoneOrSpanElement = document.createElement('div')
-      phoneOrSpanElement.innerHTML = phoneOrSpan
-      content.appendChild(phoneOrSpanElement)
+      if (place.phone) {
+        const phoneElement = document.createElement('address')
+        phoneElement.className = 'phone'
+        phoneElement.textContent = place.phone
+        content.appendChild(phoneElement)
+      } else {
+        const noPhoneElement = document.createElement('span')
+        noPhoneElement.textContent = '등록된 번호가 없습니다'
+        content.appendChild(noPhoneElement)
+      }
 
       const link = document.createElement('a')
       link.className = 'link'
