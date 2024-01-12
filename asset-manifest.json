@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/boardgame-haja/static/js/main.f921df3b.js",
+    "static/media/dice.svg": "/boardgame-haja/static/media/dice.c9a35dff0001897d86bb5a41785bd3c0.svg",
+    "static/media/brokenlink.svg": "/boardgame-haja/static/media/brokenlink.aecd87bcd41977645ffe0eb7f77924e8.svg",
+    "static/media/current.svg": "/boardgame-haja/static/media/current.844414ef8855e7c4bca2dfd1fe93e9f0.svg",
+    "static/media/location.svg": "/boardgame-haja/static/media/location.351870b901810823cc7db9f86f4e54f8.svg",
+    "static/media/search.svg": "/boardgame-haja/static/media/search.9e989dedcec59fe0fbf4d88a6ce792f2.svg",
+    "static/media/delete.svg": "/boardgame-haja/static/media/delete.997c073d53ec9516123983d5662ace0f.svg",
+    "static/media/zoomin.svg": "/boardgame-haja/static/media/zoomin.db6a1b393f18fab9302cffaee47df564.svg",
+    "static/media/zoomout.svg": "/boardgame-haja/static/media/zoomout.f10dfa5925f40ad8541e58447745c65c.svg",
+    "index.html": "/boardgame-haja/index.html",
+    "static/media/close.svg": "/boardgame-haja/static/media/close.f9e1fd884e38ced99e021f1ac47b347d.svg",
+    "main.f921df3b.js.map": "/boardgame-haja/static/js/main.f921df3b.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.f921df3b.js"
+  ]
+}
